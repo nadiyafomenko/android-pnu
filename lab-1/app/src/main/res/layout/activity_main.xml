@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/previousCalculationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/displayEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/displayEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingHorizontal="10dp"
+        android:ems="10"
+        android:background="@null"
+        android:textAlignment="textEnd"
+        android:textSize="48sp"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- clear 1 symbol button -->
+        <Button
+            android:id="@+id/clearSymbolBtn"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_button_background"
+            android:onClick="onClearOneSymbolButtonClick"
+            android:tag="ordinary"
+            android:text="@string/clear_one"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@+id/divideBtn"
+            app:layout_constraintStart_toStartOf="@+id/divideBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- clear all button -->
+        <Button
+            android:id="@+id/clearAllBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_button_background"
+            android:onClick="onClearAllButtonClick"
+            android:tag="ordinary"
+            android:text="@string/clear_all"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clearSymbolBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- left bracket button -->
+        <Button
+            android:id="@+id/leftBracketBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/left_bracket"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/clearAllBtn"
+            app:layout_constraintTop_toBottomOf="@+id/clearSymbolBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- right bracket button -->
+        <Button
+            android:id="@+id/rightBracketBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/right_bracket"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/leftBracketBtn"
+            app:layout_constraintTop_toBottomOf="@+id/clearSymbolBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- division button -->
+        <Button
+            android:id="@+id/divideBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_blue_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/division"
+            android:textColor="@color/blueBlack"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/rightBracketBtn"
+            app:layout_constraintTop_toBottomOf="@+id/clearSymbolBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 7 number button -->
+        <Button
+            android:id="@+id/sevenBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/seven"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clearAllBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 8 number button -->
+        <Button
+            android:id="@+id/eightBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/eight"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/sevenBtn"
+            app:layout_constraintTop_toBottomOf="@+id/leftBracketBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 9 number button -->
+        <Button
+            android:id="@+id/nineBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/nine"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/eightBtn"
+            app:layout_constraintTop_toBottomOf="@+id/rightBracketBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- multiple button -->
+        <Button
+            android:id="@+id/multiplyBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_blue_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/multiply"
+            android:textColor="@color/blueBlack"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/nineBtn"
+            app:layout_constraintTop_toBottomOf="@+id/divideBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 4 number button -->
+        <Button
+            android:id="@+id/fourBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/four"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sevenBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 5 number button -->
+        <Button
+            android:id="@+id/fiveBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/five"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/fourBtn"
+            app:layout_constraintTop_toBottomOf="@+id/eightBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 6 number button -->
+        <Button
+            android:id="@+id/sixBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/six"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/fiveBtn"
+            app:layout_constraintTop_toBottomOf="@+id/nineBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- minus button -->
+        <Button
+            android:id="@+id/minusBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_blue_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/minus"
+            android:textColor="@color/blueBlack"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/sixBtn"
+            app:layout_constraintTop_toBottomOf="@+id/multiplyBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 1 number button -->
+        <Button
+            android:id="@+id/oneBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/one"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fourBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 2 number button -->
+        <Button
+            android:id="@+id/twoBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/two"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/oneBtn"
+            app:layout_constraintTop_toBottomOf="@+id/fiveBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 3 number button -->
+        <Button
+            android:id="@+id/threeBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/three"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/twoBtn"
+            app:layout_constraintTop_toBottomOf="@+id/sixBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- plus button -->
+        <Button
+            android:id="@+id/plusBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/operators_blue_button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/plus"
+            android:textColor="@color/blueBlack"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/threeBtn"
+            app:layout_constraintTop_toBottomOf="@+id/minusBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- 0 number button -->
+        <Button
+            android:id="@+id/zeroBtn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/zero"
+            android:textColor="@color/indigo"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@+id/twoBtn"
+            app:layout_constraintStart_toStartOf="@+id/oneBtn"
+            app:layout_constraintTop_toBottomOf="@+id/oneBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- dot button -->
+        <Button
+            android:id="@+id/dotBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:onClick="onButtonClick"
+            android:tag="ordinary"
+            android:text="@string/dot"
+            android:textColor="@color/indigo"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/zeroBtn"
+            app:layout_constraintTop_toBottomOf="@+id/threeBtn"
+            tools:ignore="UsingOnClickInXml" />
+
+        <!-- equals button -->
+        <Button
+            android:id="@+id/equalsBtn"
+            android:layout_width="90dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/equals_button_background"
+            android:onClick="onEqualsButtonClick"
+            android:tag="ordinary"
+            android:text="@string/equals"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toEndOf="@+id/dotBtn"
+            app:layout_constraintTop_toBottomOf="@+id/plusBtn"
+            tools:ignore="UsingOnClickInXml" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
